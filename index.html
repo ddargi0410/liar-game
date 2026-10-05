@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#15151e">
+  <meta name="description" content="3명부터 10명까지, 우리 중 라이어는 한 명! 인원수를 고르고 휴대폰 한 대로 즐기는 제시어 라이어 게임.">
+  <title>우리 중 한 명 · 라이어 게임</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%2315151e'/%3E%3Ctext x='32' y='47' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='48' fill='%23d9fb6b'%3E?%3C/text%3E%3C/svg%3E">
+  <style>
+    :root{color-scheme:dark;--bg:#15151e;--panel:#1f1f2b;--line:#393947;--ink:#f5f5fa;--muted:#b1b0bf;--lime:#d9fb6b;--purple:#c2aeff;--pink:#f4b8ce;font-family:ui-rounded,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;font-synthesis:none}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);min-height:100svh;line-height:1.55;-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer;color:inherit;touch-action:manipulation}button:focus-visible,summary:focus-visible{outline:3px solid var(--lime);outline-offset:5px}button:disabled{cursor:not-allowed;opacity:.38}button{border:0}button,h1,h2,p{margin:0}.shell{width:min(100% - 40px,870px);margin:auto;padding:32px 0 max(28px,env(safe-area-inset-bottom))}.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-size:14px;letter-spacing:.04em;font-weight:700;display:flex;align-items:center;gap:10px}.brand-mark{display:inline-grid;place-items:center;width:30px;height:34px;background:var(--lime);color:var(--bg);font-size:24px;font-weight:900;border-radius:8px;transform:rotate(-9deg)}.round{border:1px solid var(--line);border-radius:99px;padding:6px 14px;font-size:14px;color:var(--muted)}.round strong{color:var(--ink);font-variant-numeric:tabular-nums;margin-left:5px}header{padding:35px 0 24px}h1{font-size:clamp(2.3rem,6vw,3.2rem);line-height:1.2;letter-spacing:-.055em;font-weight:900}h1 span{color:var(--lime)}.roles{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:17px}.pill{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:5px 11px;font-size:14px;color:var(--muted)}.pill b{color:var(--ink);font-weight:600}.divider{height:1px;background:var(--line);margin:5px 0 26px}.board-heading{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:20px}.board-heading h2{font-size:1.25rem;letter-spacing:-.03em}.board-heading p{color:var(--muted);font-size:15px;margin-top:5px}.tiny-label{color:var(--muted);font-size:13px;white-space:nowrap;border:1px solid var(--line);padding:4px 10px;border-radius:20px}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.card{position:relative;min-width:0;min-height:215px;aspect-ratio:.78;border-radius:20px;padding:19px 12px 15px;border:1px solid #535268;background:linear-gradient(155deg,#363047,#24232f 75%);display:flex;flex-direction:column;align-items:center;justify-content:space-between;overflow:hidden;transition:transform .18s,border-color .18s,background .18s;isolation:isolate}.card::before{content:"";position:absolute;z-index:-1;inset:9px;border:1px solid #6a61774a;border-radius:13px;background:repeating-linear-gradient(135deg,transparent 0 19px,#9c8ec807 19px 20px);pointer-events:none}.card:nth-child(2){background:linear-gradient(155deg,#303844,#22242e 75%)}.card:nth-child(3){background:linear-gradient(155deg,#40313e,#2a242f 75%)}.card:active{transform:scale(.97)}@media(hover:hover){.card:hover{transform:translateY(-5px);border-color:var(--purple)}.primary:hover{background:#e3ff91}.secondary:not(:disabled):hover{background:#30303e}}.player-label{font-size:14px;font-weight:700;letter-spacing:.03em;display:flex;gap:6px;align-items:center}.player-no{font-variant-numeric:tabular-nums}.question{font-size:clamp(3.8rem,11vw,7rem);line-height:1;font-weight:800;color:var(--purple);text-shadow:0 4px 0 #110e21;user-select:none}.card:nth-child(2) .question{color:var(--lime)}.card:nth-child(3) .question{color:var(--pink)}.card-action{font-size:14px;color:#c9c4d5;background:#17151e8c;padding:5px 11px;border-radius:30px;min-height:31px}.card.seen{border-color:#636270}.card.seen .card-action{color:var(--lime)}.card.answer .question{font-size:clamp(1.1rem,3vw,1.9rem);text-shadow:none;line-height:1.5;word-break:keep-all;overflow-wrap:anywhere;letter-spacing:-.03em}.card.answer{cursor:default}.card.answer:disabled{opacity:1}.card.answer::before{background:none}.progress{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:21px 0 25px;min-height:48px}.progress p{font-size:15px;color:var(--muted);word-break:keep-all}.progress p.ready{color:var(--lime)}.progress-count{font-size:14px;white-space:nowrap;color:var(--muted);display:flex;align-items:center;gap:10px}.marks{display:flex;gap:5px}.mark{display:block;width:7px;height:7px;border-radius:50%;background:#484753}.mark.done{background:var(--lime)}.actions{display:grid;grid-template-columns:1fr 1.4fr;gap:12px}.primary,.secondary,.quiet{min-height:54px;border-radius:13px;padding:13px 17px;font-size:16px;font-weight:700;transition:background .15s}.primary{background:var(--lime);color:#1a2110}.secondary{background:var(--panel);border:1px solid #454451}.quiet{background:transparent;color:var(--muted);font-weight:500}.guide{margin-top:26px;border-top:1px solid var(--line);padding-top:18px}summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-size:14px;color:var(--muted);min-height:32px}summary::-webkit-details-marker{display:none}summary::after{content:"+";font-size:20px}details[open] summary::after{content:"−"}.guide ol{padding-left:22px;color:var(--muted);font-size:15px;margin:12px 0 4px}.guide li{padding:4px 0}.guide b{color:var(--ink);font-weight:600}.deck-note{text-align:center;color:#9491a5;font-size:13px;margin-top:20px}.privacy-tip{font-size:14px;color:var(--muted);text-align:center;margin-top:12px}.dialog{width:min(440px,calc(100% - 32px));max-height:calc(100svh - 32px);padding:30px 24px 22px;background:#242330;color:var(--ink);border:1px solid #565266;border-radius:24px;box-shadow:0 32px 120px #0008;overflow:auto}.dialog::backdrop{background:#0e0e16ed;backdrop-filter:blur(12px)}.dialog[open]{animation:pop .18s ease-out}.dialog .eyebrow{font-size:14px;letter-spacing:.04em;color:var(--muted);margin-bottom:20px;text-align:center}.dialog h2{text-align:center;font-size:1.6rem;letter-spacing:-.035em;line-height:1.35}.secret-wrap{background:#191822;border:1px solid #444052;border-radius:18px;padding:30px 10px;margin:20px 0;min-height:162px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}.secret-label{font-size:14px;color:var(--muted)}.secret-word{font-size:clamp(2.1rem,9vw,3rem);font-weight:900;line-height:1.3;color:var(--lime);letter-spacing:-.04em;word-break:keep-all;overflow-wrap:anywhere;max-width:100%;text-align:center;user-select:none}.secret-hint{font-size:15px;color:var(--muted);text-align:center;word-break:keep-all;min-height:48px;line-height:1.6;margin-bottom:22px}.dialog .primary,.dialog .secondary,.dialog .quiet{width:100%}.dialog .quiet{margin-top:5px}.confirm-copy{margin:18px 0 24px;text-align:center;color:var(--muted);font-size:16px;word-break:keep-all}.result-caption{color:var(--lime)}@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}@media(min-width:760px){.shell{padding-top:42px;max-width:790px}.cards{gap:22px}.card{max-height:310px}.actions{max-width:510px;margin:auto}.privacy-tip{margin-top:18px}.board-heading{margin-bottom:24px}.progress{margin-bottom:24px}header{padding-top:34px}.guide{margin-top:30px}}@media(max-width:480px){.shell{width:calc(100% - 32px);padding-top:21px}header{padding-top:25px;padding-bottom:19px}h1{font-size:2.55rem}.divider{margin-bottom:20px}.board-heading p{font-size:14px}.tiny-label{display:none}.cards{gap:9px}.card{padding:15px 7px 12px;min-height:177px;border-radius:16px;aspect-ratio:.64}.card::before{inset:6px;border-radius:11px}.question{font-size:4.4rem}.card-action{font-size:13px;padding:5px 8px}.progress{margin:16px 0 18px;align-items:flex-start}.progress p{font-size:14px;max-width:230px}.progress-count{padding-top:2px;font-size:13px;gap:7px}.marks{gap:4px}.mark{width:6px;height:6px}.actions{gap:9px}.guide{margin-top:20px}.deck-note{margin-top:15px}}@media(prefers-reduced-motion:reduce){*,*::before{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+    [hidden]{display:none!important}.change-players{min-height:44px;background:transparent;color:var(--lime);font-size:14px;padding:8px 4px;margin-left:auto;text-decoration:underline;text-underline-offset:4px}.setup-panel{max-width:570px;margin:0 auto;padding:5px 0 4px}.setup-panel h2{font-size:1.6rem;letter-spacing:-.045em}.setup-intro{color:var(--muted);margin-top:7px;font-size:16px}.player-options{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:24px 0 20px}.player-option{min-height:72px;border:1px solid var(--line);border-radius:15px;background:var(--panel);font-size:1.35rem;font-weight:750;transition:background .15s,border-color .15s}.player-option[aria-pressed="true"]{background:var(--lime);border-color:var(--lime);color:#1a2110;box-shadow:0 0 0 3px #d9fb6b18}.selection-summary{border:1px solid var(--line);border-radius:13px;padding:15px;text-align:center;color:var(--muted);font-size:16px}.selection-summary b{color:var(--lime)}.setup-panel>.primary{width:100%;margin-top:22px}.setup-panel>.quiet{width:100%;margin-top:4px}.setup-note{margin-top:12px;color:var(--muted);font-size:14px;text-align:center;word-break:keep-all}.marks{display:grid;grid-template-columns:repeat(5,7px);gap:5px}.card:nth-child(3n + 2){background:linear-gradient(155deg,#303844,#22242e 75%)}.card:nth-child(3n){background:linear-gradient(155deg,#40313e,#2a242f 75%)}.card:nth-child(3n + 2) .question{color:var(--lime)}.card:nth-child(3n) .question{color:var(--pink)}.cards.many{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.cards.large-group{grid-template-columns:repeat(5,minmax(0,1fr))}.cards.many .card{min-height:190px;aspect-ratio:.76;padding-inline:8px}.cards.many .question{font-size:4.8rem}.cards.many .answer .question{font-size:1.35rem}.cards.many .player-label{font-size:13px;gap:4px;letter-spacing:0}.cards.many .card-action{font-size:13px;padding-inline:8px}@media(max-width:759px){.cards.many,.cards.large-group{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.cards.four-players{grid-template-columns:repeat(2,minmax(0,1fr))}.cards.many .card{min-height:160px;aspect-ratio:.8}.cards.many .question{font-size:3.8rem}.cards.many .answer .question{font-size:1.12rem}.marks{grid-template-columns:repeat(5,6px);gap:4px}.mark{width:6px;height:6px}.progress{align-items:center}.player-label{font-size:13px;gap:4px;letter-spacing:0}}@media(max-width:480px){.roles{gap:7px}.pill{font-size:13px;padding-inline:9px}.change-players{margin-left:0}.player-options{gap:9px}.player-option{min-height:65px}.setup-panel h2{font-size:1.45rem}.progress p{max-width:none;flex:1}.progress-count{gap:6px}.cards.many .card{padding-inline:6px}.card-action{padding-inline:6px}}@media(max-width:359px){.cards.many .player-label,.player-label{flex-direction:column;gap:0}.cards.many .card{min-height:175px}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <div class="topbar"><div class="brand"><span class="brand-mark" aria-hidden="true">?</span> 라이어 게임</div><div class="round">ROUND <strong id="round">—</strong></div></div>
+    <header><h1>우리 중 <span>한 명.</span></h1><div class="roles"><span class="pill"><b id="player-summary">3~10명</b>이 함께</span><span class="pill" id="role-summary">라이어는 <b>늘 1명</b></span><button class="change-players" id="change-players" type="button" hidden>인원수 변경</button></div></header>
+    <div class="divider"></div>
+    <section class="setup-panel" id="setup-panel" aria-labelledby="setup-title">
+      <h2 id="setup-title">몇 명이 함께 하나요?</h2><p class="setup-intro">3명부터 10명까지 골라 주세요.</p>
+      <div class="player-options" id="player-options" role="group" aria-label="참가 인원 선택"></div>
+      <p class="selection-summary" id="selection-summary" aria-live="polite"></p>
+      <button class="primary" id="start-game" type="button">3명으로 시작하기</button>
+      <button class="quiet" id="cancel-setup" type="button" hidden>기존 게임 계속하기</button>
+      <p class="setup-note" id="setup-note">게임 중에도 ‘인원수 변경’으로 다시 고를 수 있어요.</p>
+    </section>
+    <section id="game-panel" aria-labelledby="board-title" hidden>
+      <div class="board-heading"><div><h2 id="board-title">내 카드를 골라요.</h2><p id="board-subtitle">다른 사람은 잠깐 고개를 돌려 주세요.</p></div><span class="tiny-label">한 명씩 몰래 확인</span></div>
+      <div class="cards" id="cards"></div>
+      <div class="progress"><p id="status" role="status" aria-live="polite">각자 번호를 정하고, 자기 카드만 눌러요.</p><div class="progress-count"><span class="marks" id="marks" aria-hidden="true"></span><span id="count">0 / 3</span></div></div>
+      <div class="actions"><button class="secondary" id="reveal" type="button" disabled>정답 공개</button><button class="primary" id="next" type="button">다음 게임</button></div>
+      <p class="privacy-tip">카드를 확인한 뒤 꼭 ‘가리기’를 눌러 주세요.</p>
+    </section>
+    <details class="guide"><summary>어떻게 하나요?</summary><ol><li><b>참가 인원(3~10명)</b>을 고르고 시작해요. 각자 번호를 정한 뒤, 자기 카드만 몰래 보고 가려요.</li><li>한 명은 <b>‘라이어’</b>, 나머지는 모두 <b>같은 제시어</b>를 봐요.</li><li>한 명씩 물건을 설명해요. 제시어 자체는 말하지 않아요. 라이어도 아는 척!</li><li>이야기를 나눈 뒤 라이어를 골라요. 라이어에게 제시어를 맞힐 기회를 주고, <b>정답 공개</b>로 확인해요.</li><li><b>다음 게임</b>은 같은 인원으로 진행해요. <b>인원수 변경</b>을 누르면 인원을 다시 골라 새 게임을 시작할 수 있어요.</li></ol></details>
+    <p class="deck-note" id="deck-note">설명하기 좋은 생활 물건 · 매번 새로운 제시어</p>
+  </main>
+  <dialog class="dialog" id="secret-dialog" aria-labelledby="secret-title">
+    <p class="eyebrow" id="secret-owner"></p><h2 id="secret-title">나만 보는 비밀 카드</h2>
+    <div class="secret-wrap"><span class="secret-label">내 카드</span><p class="secret-word" id="secret-word"></p></div>
+    <p class="secret-hint" id="secret-hint"></p><button type="button" class="primary" id="hide">확인했어요 · 가리기</button>
+  </dialog>
+  <dialog class="dialog" id="confirm-dialog" aria-labelledby="confirm-title">
+    <h2 id="confirm-title"></h2><p class="confirm-copy" id="confirm-copy"></p><button type="button" class="primary" id="confirm-yes"></button><button type="button" class="quiet" id="confirm-no">계속 게임하기</button>
+  </dialog>
+  <script>
+  (() => {
+    'use strict';
+    const WORDS = [
+      '우산','칫솔','치약','비누','수건','샴푸','빗','거울','휴지','면봉','손톱깎이','드라이어','세탁기','냉장고','전자레인지','선풍기','청소기','에어컨','다리미','가습기',
+      '숟가락','젓가락','포크','국자','뒤집개','프라이팬','냄비','도마','주전자','전기밥솥','토스터','믹서기','텀블러','보온병','도시락통','접시','쟁반','물병','빨대','체',
+      '연필','지우개','볼펜','형광펜','색연필','크레파스','물감','붓','팔레트','자','컴퍼스','각도기','가위','풀','테이프','스테이플러','클립','필통','공책','책갈피',
+      '책가방','신발주머니','운동화','장화','슬리퍼','샌들','양말','장갑','목도리','모자','귀마개','선글라스','안경','손목시계','목걸이','반지','머리핀','머리띠','허리띠','앞치마',
+      '스마트폰','태블릿','노트북','키보드','마우스','모니터','이어폰','헤드폰','스피커','마이크','카메라','삼각대','리모컨','충전기','보조배터리','건전지','손전등','멀티탭','계산기','프린터',
+      '의자','책상','소파','침대','베개','이불','커튼','옷걸이','옷장','서랍장','책장','신발장','발판','러그','방석','벽시계','알람시계','스탠드','쓰레기통','빨래바구니',
+      '축구공','농구공','야구공','야구방망이','야구글러브','배드민턴 라켓','셔틀콕','탁구채','줄넘기','훌라후프','스케이트보드','인라인스케이트','자전거','킥보드','헬멧','구명조끼','튜브','물안경','오리발','물총',
+      '인형','로봇 장난감','블록','퍼즐','주사위','팽이','요요','비눗방울','풍선','연','카드','돋보기','망원경','쌍안경','나침반','지구본','지도','달력','저금통','모래시계',
+      '망치','드라이버','펜치','톱','줄자','나사','자물쇠','열쇠','사다리','빗자루','쓰레받기','걸레','고무장갑','수세미','분무기','물뿌리개','화분','삽','양동이','집게',
+      '텐트','침낭','돗자리','부채','핫팩','아이스팩','캐리어','지갑','동전','지폐','우체통','우표','봉투','스티커','상자','쇼핑백','리본','양초','종','호루라기'
+    ];
+    const KEY = 'liar-trio-v1';
+    const $ = id => document.getElementById(id);
+    let cards = [];
+    let marks = [];
+    const playerOptions = [];
+    const secretDialog = $('secret-dialog');
+    const confirmDialog = $('confirm-dialog');
+    let pendingAction = null;
+    let state = loadState();
+    let pendingCount = state.playerCount;
+    let setupOpen = true;
+
+    function validCount(n) { return Number.isInteger(n) && n >= 3 && n <= 10; }
+
+    function randomInt(max) {
+      if (globalThis.crypto && typeof crypto.getRandomValues === 'function') {
+        const arr = new Uint32Array(1), limit = Math.floor(4294967296 / max) * max;
+        do { crypto.getRandomValues(arr); } while (arr[0] >= limit);
+        return arr[0] % max;
+      }
+      return Math.floor(Math.random() * max);
+    }
+    function shuffled(values) {
+      const result = [...values];
+      for (let i = result.length - 1; i > 0; i--) {
+        const j = randomInt(i + 1);
+        [result[i], result[j]] = [result[j], result[i]];
+      }
+      return result;
+    }
+    function loadState() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(KEY));
+        const n = saved && saved.version === 1 ? 3 : saved && saved.playerCount;
+        if (saved && [1,2].includes(saved.version) && validCount(n) && WORDS.includes(saved.word) && Number.isSafeInteger(saved.round) && saved.round > 0 && Number.isInteger(saved.liar) && saved.liar >= 0 && saved.liar < n && Array.isArray(saved.seen) && saved.seen.length === n && saved.seen.every(v => typeof v === 'boolean') && typeof saved.revealed === 'boolean' && (!saved.revealed || saved.seen.every(Boolean)) && Array.isArray(saved.remaining) && saved.remaining.length <= WORDS.length && saved.remaining.every(w => WORDS.includes(w) && w !== saved.word) && new Set(saved.remaining).size === saved.remaining.length) return {...saved,version:2,playerCount:n};
+      } catch (_) {}
+      return {version:2, playerCount:3, round:0, word:null, liar:0, seen:[false,false,false], revealed:false, remaining:[]};
+    }
+    function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (_) {} }
+    function nextRound(playerCount = state.playerCount) {
+      if (!validCount(playerCount)) throw new Error('인원은 3~10명 중에서 골라 주세요.');
+      hideSecret();
+      closeConfirmation();
+      if (!state.remaining.length) {
+        state.remaining = shuffled(WORDS);
+        if (state.remaining[state.remaining.length - 1] === state.word) [state.remaining[0], state.remaining[state.remaining.length - 1]] = [state.remaining[state.remaining.length - 1], state.remaining[0]];
+      }
+      state.word = state.remaining.pop();
+      state.playerCount = playerCount;
+      state.liar = randomInt(playerCount);
+      state.round += 1;
+      state.seen = Array(playerCount).fill(false);
+      state.revealed = false;
+      setupOpen = false;
+      save(); render();
+    }
+    function buildCards() {
+      if (cards.length === state.playerCount) return;
+      $('cards').replaceChildren(); $('marks').replaceChildren(); cards = []; marks = [];
+      for (let i = 0; i < state.playerCount; i++) {
+        const card = document.createElement('button');
+        card.className = 'card'; card.type = 'button';
+        card.innerHTML = `<span class="player-label"><span class="player-no">${String(i+1).padStart(2,'0')}</span> 플레이어</span><span class="question" aria-hidden="true">?</span><span class="card-action">카드 보기</span>`;
+        card.addEventListener('click',() => showCard(i));
+        $('cards').append(card); cards.push(card);
+        const mark = document.createElement('i'); mark.className = 'mark'; $('marks').append(mark); marks.push(mark);
+      }
+      $('cards').classList.toggle('many',state.playerCount > 3);
+      $('cards').classList.toggle('large-group',state.playerCount >= 5);
+      $('cards').classList.toggle('four-players',state.playerCount === 4);
+    }
+    function renderSetup() {
+      playerOptions.forEach((option,i) => option.setAttribute('aria-pressed',String(pendingCount === i+3)));
+      $('selection-summary').innerHTML = `같은 제시어 <b>${pendingCount-1}명</b> · 라이어 <b>1명</b>`;
+      $('start-game').textContent = `${pendingCount}명으로 ${state.round ? '새 게임' : '시작하기'}`;
+      $('cancel-setup').hidden = !state.round;
+      $('setup-note').textContent = state.round ? '새 게임을 시작하면 기존 카드는 사라져요. 제시어 중복 방지 기록은 유지돼요.' : '게임 중에도 ‘인원수 변경’으로 다시 고를 수 있어요.';
+      if (setupOpen) {
+        $('player-summary').textContent = pendingCount + '명';
+        $('role-summary').innerHTML = `제시어 <b>${pendingCount-1}명</b> · 라이어 <b>1명</b>`;
+      }
+    }
+    function selectPlayerCount(n) {
+      if (!validCount(n)) throw new Error('인원은 3~10명 중에서 골라 주세요.');
+      pendingCount = n; renderSetup();
+    }
+    function openSetup() {
+      hideSecret(); closeConfirmation(); setupOpen = true; pendingCount = state.playerCount; render();
+    }
+    function closeSetup() {
+      if (!state.round) return;
+      setupOpen = false; render(); $('change-players').focus();
+    }
+    function render() {
+      $('setup-panel').hidden = !setupOpen;
+      $('game-panel').hidden = setupOpen;
+      $('change-players').hidden = setupOpen;
+      $('player-summary').textContent = state.playerCount + '명';
+      $('role-summary').innerHTML = `제시어 <b>${state.playerCount-1}명</b> · 라이어 <b>1명</b>`;
+      const count = state.seen.filter(Boolean).length;
+      $('round').textContent = state.round ? String(state.round).padStart(2,'0') : '—';
+      $('count').textContent = count + ' / ' + state.playerCount;
+      buildCards();
+      marks.forEach((mark,i) => mark.classList.toggle('done',state.seen[i]));
+      cards.forEach((card,i) => {
+        card.classList.toggle('seen',state.seen[i]);
+        card.classList.toggle('answer',state.revealed);
+        card.disabled = state.revealed;
+        card.querySelector('.question').textContent = state.revealed ? (i === state.liar ? '라이어' : state.word) : '?';
+        card.querySelector('.card-action').textContent = state.revealed ? (i === state.liar ? '몰랐어요' : '알았어요') : (state.seen[i] ? '✓ 다시 보기' : '카드 보기');
+        card.setAttribute('aria-label',state.revealed ? `${i+1}번: ${i === state.liar ? '라이어' : state.word}` : `${i+1}번 카드 ${state.seen[i] ? '다시' : ''} 확인`);
+      });
+      $('reveal').disabled = count < state.playerCount || state.revealed;
+      $('reveal').textContent = state.revealed ? '공개 완료' : '정답 공개';
+      $('board-title').textContent = state.revealed ? `${state.liar+1}번이 라이어였어요!` : '내 카드를 골라요.';
+      $('board-subtitle').textContent = state.revealed ? `이번 제시어는 ‘${state.word}’` : '다른 사람은 잠깐 고개를 돌려 주세요.';
+      $('status').classList.toggle('ready',count === state.playerCount);
+      $('status').textContent = state.revealed ? '들켰나요, 속였나요? 다음 게임도 해 봐요.' : count === state.playerCount ? '준비 끝! 한 명씩 물건을 설명해 보세요.' : count === 0 ? '각자 번호를 정하고, 자기 카드만 눌러요.' : `${count}명 확인 완료. 다음 사람이 확인해 주세요.`;
+      $('deck-note').textContent = `생활 물건 ${WORDS.length}개 · 모두 나올 때까지 중복 없이`;
+      renderSetup();
+    }
+    function showCard(index) {
+      if (!Number.isInteger(index) || index < 0 || index >= state.playerCount) throw new Error(`카드 번호는 1~${state.playerCount} 중 하나여야 해요.`);
+      if (setupOpen || !state.round || state.revealed || secretDialog.open || confirmDialog.open) return false;
+      $('secret-owner').textContent = `${index+1}번 플레이어만 봐 주세요`;
+      $('secret-word').textContent = index === state.liar ? '라이어' : state.word;
+      $('secret-hint').textContent = index === state.liar ? '제시어를 몰라도 괜찮아요. 다른 사람의 설명을 듣고, 아는 척해 보세요.' : '이 물건을 기억해 주세요. 제시어를 직접 말하지 말고 특징을 설명해요.';
+      state.seen[index] = true;
+      save(); render();
+      secretDialog.showModal();
+      $('hide').focus();
+      return true;
+    }
+    function hideSecret() {
+      // Remove the secret immediately, including when the page loses visibility.
+      $('secret-word').textContent = '';
+      $('secret-owner').textContent = '';
+      $('secret-hint').textContent = '';
+      if (secretDialog.open) secretDialog.close();
+    }
+    function closeConfirmation() {
+      if (confirmDialog.open) confirmDialog.close();
+      pendingAction = null;
+    }
+    function ask(action, alwaysConfirm = false) {
+      if (setupOpen || !state.round || secretDialog.open || confirmDialog.open) return false;
+      if (action === 'reveal' && (state.revealed || !state.seen.every(Boolean))) return false;
+      if (action === 'next' && state.revealed && !alwaysConfirm) { nextRound(); return true; }
+      pendingAction = action;
+      $('confirm-title').textContent = action === 'reveal' ? '누가 라이어인지 골랐나요?' : '다음 게임으로 넘어갈까요?';
+      $('confirm-copy').textContent = action === 'reveal' ? '라이어의 마지막 추측까지 들었다면, 제시어와 모두의 카드를 공개해요.' : `${state.playerCount}명이 다시 시작해요. 이번 카드는 사라지고, 새로운 제시어와 라이어를 뽑아요.`;
+      $('confirm-yes').textContent = action === 'reveal' ? '다 같이 정답 보기' : '새 게임 시작';
+      confirmDialog.showModal();
+      $('confirm-no').focus();
+      return true;
+    }
+    function revealAnswer() {
+      if (setupOpen || !state.round || !state.seen.every(Boolean)) return false;
+      hideSecret(); state.revealed = true; save(); render(); return true;
+    }
+    for (let n = 3; n <= 10; n++) {
+      const option = document.createElement('button'); option.type = 'button'; option.className = 'player-option'; option.textContent = n + '명';
+      option.addEventListener('click',() => selectPlayerCount(n));
+      $('player-options').append(option); playerOptions.push(option);
+    }
+    $('change-players').addEventListener('click',openSetup);
+    $('cancel-setup').addEventListener('click',closeSetup);
+    $('start-game').addEventListener('click',() => { nextRound(pendingCount); cards[0].focus(); });
+    $('hide').addEventListener('click',hideSecret);
+    secretDialog.addEventListener('cancel',event => { event.preventDefault(); hideSecret(); });
+    secretDialog.addEventListener('click',event => { if (event.target === secretDialog) { const r = secretDialog.getBoundingClientRect(); if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) hideSecret(); } });
+    $('next').addEventListener('click',() => ask('next'));
+    $('reveal').addEventListener('click',() => ask('reveal'));
+    $('confirm-no').addEventListener('click',closeConfirmation);
+    $('confirm-yes').addEventListener('click',() => { const action = pendingAction; closeConfirmation(); if (action === 'next') nextRound(); else if (action === 'reveal') revealAnswer(); });
+    confirmDialog.addEventListener('cancel',event => { event.preventDefault(); closeConfirmation(); });
+    document.addEventListener('visibilitychange',() => { if (document.hidden) { hideSecret(); closeConfirmation(); } });
+    window.addEventListener('pagehide',hideSecret);
+    window.addEventListener('blur',hideSecret);
+    render();
+
+    // A supporting agent can inspect progress or open the same confirmation UI.
+    // Hidden roles and words are never returned by these tools.
+    const context = document.modelContext;
+    if (context && typeof context.registerTool === 'function') {
+      const lifecycle = new AbortController();
+      const register = tool => { try { Promise.resolve(context.registerTool(tool,{signal:lifecycle.signal})).catch(() => {}); } catch (_) {} };
+      const checkInput = input => { if (!input || typeof input !== 'object' || Array.isArray(input) || Object.keys(input).length) throw new Error('빈 객체만 입력할 수 있습니다.'); };
+      register({name:'get_game_progress',title:'게임 진행 상태',description:'현재 라운드와 인원수, 확인한 카드 수를 읽습니다. 비밀 제시어나 역할은 반환하지 않습니다.',inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:true,untrustedContentHint:false},execute(input){checkInput(input); return {round:state.round,checkedCards:state.seen.filter(Boolean).length,totalPlayers:state.playerCount,answerRevealed:state.revealed,setupOpen};}});
+      register({name:'start_next_round_confirmation',title:'다음 게임 준비',description:'다음 게임 확인창만 엽니다. 실제 시작은 화면에서 확인해야 합니다. 제시어나 역할은 반환하지 않습니다.',inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:false,untrustedContentHint:false},execute(input){checkInput(input); const accepted=ask('next',true); return {accepted,round:state.round,confirmationOpen:confirmDialog.open};}});
+      register({name:'stage_player_count',title:'참가 인원 고르기',description:'인원 선택 화면에서 3~10명 중 하나를 선택합니다. 기존 게임은 유지되며 새 게임은 시작 버튼을 눌러야 시작됩니다.',inputSchema:{type:'object',properties:{playerCount:{type:'integer',minimum:3,maximum:10}},required:['playerCount'],additionalProperties:false},annotations:{readOnlyHint:false,untrustedContentHint:false},execute(input){if (!input || typeof input !== 'object' || Array.isArray(input) || Object.keys(input).length !== 1 || !validCount(input.playerCount)) throw new Error('playerCount에 3~10 사이의 정수를 입력해 주세요.'); openSetup(); selectPlayerCount(input.playerCount); return {selectedPlayers:pendingCount,setupOpen,gameStarted:false};}});
+      window.addEventListener('pagehide',event => { if (!event.persisted) lifecycle.abort(); });
+    }
+  })();
+  </script>
+</body>
+</html>
